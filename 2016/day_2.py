@@ -56,9 +56,9 @@ with open("data/day2.txt") as f:
                 pass
             else:
                 if char == "U":
-                    num = num - 4 if num is not 3 else (num - 2)
+                    num = num - 4 if num is not 3 and num is not 13 else (num - 2)
                 elif char == "D":
-                    num = num + 4 if num is not 11 else (num + 2)
+                    num = num + 4 if num is not 1 and num is not 11 else (num + 2)
                 elif char == "L":
                     num -= 1
                 elif char == "R":
