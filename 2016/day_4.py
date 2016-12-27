@@ -19,10 +19,11 @@ with open("data/day4.txt") as f:
             else:
                 letters[letter] += 1
 
-        letters = sorted(letters.items(), key=operator.itemgetter(1), reverse=True)
-        for i in range(len(checksum)):
-            check = checksum[i]
-            if letters[i][0] == check:
-                rooms.append(room)
+
+        rank = sorted([-letters[c],c] for c in letters.keys())
+        rankstr = ''.join(rank[x][1] for x in xrange(min(5,len(rank))))
+
+        if rankstr == checksum:
+            rooms.append(room)
 
     print (sum(rooms))
