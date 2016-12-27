@@ -19,11 +19,22 @@ with open("data/day4.txt") as f:
             else:
                 letters[letter] += 1
 
-
+        # Part 1
         rank = sorted([-letters[c],c] for c in letters.keys())
         rankstr = ''.join(rank[x][1] for x in xrange(min(5,len(rank))))
 
         if rankstr == checksum:
             rooms.append(room)
+
+        # Part 2
+        a = ord("a")
+        msg = ""
+        name = " ".join(parts[:-1])
+        for c in name:
+            if c != " ":
+                msg += chr((ord(c)-a+room)%26 + a)
+
+        if msg == "northpoleobjectstorage":
+            print (room)
 
     print (sum(rooms))
